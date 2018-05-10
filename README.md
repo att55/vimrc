@@ -6,17 +6,19 @@ vimのプラグイン管理ツール。
 ### vundleとの違い
 公式ドキュメントからの引用
 
-コマンド名が改善されている
-vital化されている
-shellslashがオンでも動作する
-vimprocに対応している
-unite.vimインタフェースの実装
-Subversion, Mercurialへの対応
-リビジョン指定
+- コマンド名が改善されている
+- vital化されている
+- shellslashがオンでも動作する
+- vimprocに対応している
+- unite.vimインタフェースの実装
+- Subversion, Mercurialへの対応
+- リビジョン指定
 
 ### 使い方
- $ curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > install.sh
- $ sh ./install.sh
+```
+$ curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > install.sh
+$ sh ./install.sh
+```
 下記をvimrcに追記
 
 "NeoBundle Scripts-----------------------------
@@ -54,5 +56,16 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 "End NeoBundle Scripts-------------------------
+
 vi上から、:NeoBundleInstall で.vimrcのNeoBundleで指定されているリポジトリのプラグインをインストールできる。
+
 プラグインを削除したい場合は、vimrc上からNeoBundleの記述を消して :NeoBundleClean でできる。
+
+
+### Trouble Shooting
+#### Unknown function: neobundle#begin
+
+- set runtimepath += ~/.vim/bundle/neobundle.vim/
+- call neobundle#begin(expand('~/.vim/bundle'))
+
+の２行のパスが、相対パスでなく絶対パスである必要
